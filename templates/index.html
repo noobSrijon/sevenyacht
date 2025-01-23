@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Availability</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+    <script data-cfasync="false" type="text/javascript" src="https://tc.gaconnector.com/gaconnector.js"></script>
+    <script>
+    function setGaconnectorHiddenFields() {
+        var gaFields = gaconnector.getCookieValues();
+        for (var fieldName in gaFields) {
+            var selectors = 'form input[name="' + fieldName + '"], form input#' + fieldName + ', form input#field_' + fieldName + ', form input[name="' + fieldName.toLowerCase() + '"], form input#' + fieldName.toLowerCase() + ', form input#field_' + fieldName.toLowerCase() + ', input[value="gaconnector_' + fieldName + '"],';
+            selectors += 'form textarea[name="'+fieldName+'"], form textarea#'+fieldName+', form textarea#field_'+fieldName + ', form textarea[name="'+fieldName.toLowerCase()+'"], form textarea#'+fieldName.toLowerCase()+', form textarea#field_'+fieldName.toLowerCase()+', form textarea.'+fieldName+', form textarea[name="param['+fieldName+']"]'+", form textarea[id^='field_"+fieldName+"']";
+            var inputs = document.querySelectorAll(selectors);
+            if (inputs === null) {
+                continue;
+            } else if (typeof inputs.length === 'undefined') {
+                inputs.value = gaFields[fieldName];
+            } else {
+                for (var i = 0; i < inputs.length; i++) {
+                    inputs[i].value = gaFields[fieldName];
+                }
+            }
+        }
+    }
+    
+    gaconnector.setCallback(setGaconnectorHiddenFields);
+    setInterval(setGaconnectorHiddenFields, 1000);
+    </script>
+</head>
+<body class="flex items-center justify-center min-h-screen">
+    <div class="w-full max-w-md p-8 bg-white/50 shadow-lg rounded-sm backdrop-blur-sm">
+        <!-- add a logo -->
+        <div class="flex justify-center mb-6">
+            <img src="https://sevenyachts.ae/wp-content/smush-webp/2024/11/logo-primary-blue@4x.png.webp" style="height: 60px; width: auto;" />
+        </div>
+         
+        <h1 class="text-xl font-bold text-center mb-8 uppercase text-gray-800">Check Yacht Availability</h1>
+        <form action="/submit" method="POST">
+            <!-- Matrix -->
+            <div class="mb-6">
+                <input
+                    type="text"
+                    name="matrix"
+                    placeholder="Matrix"
+                    value="Matrix"
+                    readonly="readonly" 
+                    class="w-full border-b border-black py-2 placeholder-gray-600 bg-transparent outline-none focus:border-black" required
+                />
+            </div>
+
+            <!-- Full Name -->
+            <div class="mb-6">
+                <input
+                    type="text"
+                    name="name"
+                    required
+                    placeholder="Full Name"
+                    class="w-full border-b border-black placeholder-gray-600 py-2 bg-transparent outline-none focus:border-black"
+                />
+            </div>
+
+            <!-- Email Address -->
+            <div class="mb-6">
+                <input
+                    type="email"
+                    required
+                    name="email"
+                    placeholder="Email Address"
+                    class="w-full border-b border-black placeholder-gray-600 py-2 bg-transparent outline-none focus:border-black"
+                />
+            </div>
+
+            <!-- Phone Number -->
+            <div class="mb-6">
+                <input
+                    type="text"
+                    required
+                    name="phone"
+                    placeholder="Phone Number"
+                    class="w-full border-b border-black placeholder-gray-600 py-2 bg-transparent outline-none focus:border-black"
+                />
+            </div>
+
+            <!-- Date and Time -->
+            <div class="grid grid-cols-2 gap-6 mb-6">
+                <div>
+                    <input
+                        type="date"
+                        required
+                        name="date"
+                        placeholder="Date"
+                        class="w-full border-b border-black placeholder-gray-600 py-2 bg-transparent outline-none focus:border-black"
+                    />
+                </div>
+                <div>
+                    <input
+                        type="time"
+                        name="time"
+                        placeholder="Time"
+                        class="w-full border-b border-black placeholder-gray-600 py-2 bg-transparent outline-none focus:border-black"
+                    />
+                </div>
+            </div>
+
+            <!-- Select Charter Length -->
+            <div class="mb-6">
+                <select
+                    required
+                    name="charter-length"
+                    class="w-full border-b border-black placeholder-gray-600 text-gray-700 py-2 bg-transparent outline-none focus:border-black"
+                >
+                    <option value="" disabled selected>Select Charter Length</option>
+                    <option value="1-hour">1 Hour</option>
+                    <option value="2-hour">2 Hours</option>
+                    <option value="half-day">Half Day</option>
+                </select>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="mt-8">
+                <button
+                    class="w-full bg-transparent border-2 text-black py-3 text-sm font-bold uppercase tracking-wide border border-black hover:bg-black hover:text-white transition duration-300"
+                >
+                    Submit
+                </button>
+            </div>
+            <input type="hidden" id="fc_campaign">
+            <input type="hidden" id="fc_channel">
+            <input type="hidden" id="fc_content">
+            <input type="hidden" id="fc_landing">
+            <input type="hidden" id="fc_medium">
+            <input type="hidden" id="fc_referrer">
+            <input type="hidden" id="fc_source">
+            <input type="hidden" id="fc_term">
+            <input type="hidden" id="lc_campaign">
+            <input type="hidden" id="lc_channel">
+            <input type="hidden" id="lc_content">
+            <input type="hidden" id="lc_landing">
+            <input type="hidden" id="lc_medium">
+            <input type="hidden" id="lc_referrer">
+            <input type="hidden" id="lc_source">
+            <input type="hidden" id="lc_term">
+            <input type="hidden" id="OS">
+            <input type="hidden" id="GA_Client_ID">
+            <input type="hidden" id="gclid">
+            <input type="hidden" id="all_traffic_sources">
+            <input type="hidden" id="browser">
+            <input type="hidden" id="city">
+            <input type="hidden" id="country">
+            <input type="hidden" id="device">
+            <input type="hidden" id="page_visits">
+            <input type="hidden" id="pages_visited_list">
+            <input type="hidden" id="region">
+            <input type="hidden" id="time_zone">
+            <input type="hidden" id="time_passed">
+            <input type="hidden" id="latitude">
+            <input type="hidden" id="longitude">
+        </form>
+    </div>
+</body>
+</html>

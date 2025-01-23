@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enquiry Taken</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    
+</head>
+<body class="flex items-center justify-center min-h-screen">
+    <div class="w-full max-w-md p-8 bg-white/50 shadow-lg rounded-sm backdrop-blur-sm ">
+        <div class="svg-container flex items-center justify-center">    
+            <svg class="ft-animated-tick" xmlns="http://www.w3.org/2000/svg" height="100" width="100" viewBox="0 0 48 48" aria-hidden="true">
+                <!-- Animated circle -->
+                <circle fill="none" stroke="#000" stroke-width="1" cx="24" cy="24" r="22" stroke-dasharray="138" stroke-dashoffset="138">
+                    <animate attributeName="stroke-dashoffset" from="138" to="0" dur="0.8s" fill="freeze" />
+                </circle>
+            
+                <!-- Animated tick -->
+                <path fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
+                      d="M14 27l5.917 4.917L34 17" stroke-dasharray="40" stroke-dashoffset="40">
+                    <animate attributeName="stroke-dashoffset" from="40" to="0" dur="0.5s" begin="0.8s" fill="freeze" />
+                </path>
+            </svg>
+            
+            
+            </div>
+            <p class="text-center p-8 text-black text-lg">Your inquiry has been successfully received! You will receive a receipt on your WhatsApp within a minutes. Thank you!</p>
+        
+    </div>
+     
+</body>
+</html>
